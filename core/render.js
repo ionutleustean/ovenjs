@@ -22,7 +22,15 @@ const render =  {
 
         componentMap.set(componentMetadata.meta.selector, instance);
 
+
         window.document.getElementById(componentMetadata.meta.selector).innerHTML = instance.render();
+
+        if(componentMetadata.meta.children){
+            componentMetadata.meta.children.forEach(child =>{
+                render.init(child);
+            })
+        }
+
 
     }
 }

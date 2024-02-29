@@ -1,0 +1,47 @@
+
+.slide-one {
+    background: url(../public/pizza-one.jpeg) no-repeat bottom;
+}
+.slide-two {
+    background: url(../public/pizza-two.jpeg) no-repeat bottom;
+}
+.slide-three {
+    background: url(../public/pizza-three.jpg) no-repeat bottom;
+}
+
+
+
+.slide {
+    background-size: cover;
+    display: block;
+    height: 400px ;
+    position: relative;
+    margin: 25px;
+    border-radius: 40px;
+}
+
+.slide .slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background: rgba(0, 0, 0, 0.6);
+    top: 40%;
+    left: 10%;
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    color: var(--white);
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.slide .slide-content h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.slide .slide-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
