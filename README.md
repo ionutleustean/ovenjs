@@ -1,3 +1,3 @@
 # TODO:
-    1. Destroy components renderd by router
-    2. Destroy childs that should not be rendered
+    1. Create a slider for store
+    2. Create a chage detection mechanism for rereading the data
