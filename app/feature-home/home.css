@@ -1,0 +1,34 @@
+
+
+.home {
+    background: url("../../public/home-bg.jpg") no-repeat bottom;
+    background-size: cover;
+    height: calc(100vh - 5rem) ;
+    position: relative;
+}
+
+.home .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background: rgba(0, 0, 0, 0.6);
+    top: 40%;
+    left: 10%;
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    color: var(--white);
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.home .home-container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.home .home-container p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}

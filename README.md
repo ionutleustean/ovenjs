@@ -1,5 +1,5 @@
 # TODO:
-    1. Create 2 pages
-    2. Create a navigation bar
-    3. Create a router configuration
-    4. Create a router implementation
+    1. Create a new file named render.js
+    2. Store components in a Component Map
+    3. Create a reder function that takes a component metadeta and render it
+    4. Create a function that provide the component metadata
