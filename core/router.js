@@ -19,7 +19,8 @@ router = (routerConfig) => {
     }
 
     function renderComponent (component) {
-        this.document.getElementById("outlet").innerHTML = (new component()).render();
+        this.document.getElementById("outlet").innerHTML = `<div id="${component.meta.selector}"> </div>`
+        render.init(component)
     }
 
 

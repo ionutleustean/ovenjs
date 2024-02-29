@@ -1,4 +1,4 @@
-class Home {
+const Home = CreateComponent({selector: 'home-component'} , class {
     render() {
         return `
       <div class="home">
@@ -9,4 +9,4 @@ class Home {
       </div>
     `;
     }
-}
+});

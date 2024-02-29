@@ -2,7 +2,7 @@
 
 
 
-class Store {
+ Store = CreateComponent({selector: 'store-component'}, class {
 
     render() {
         return `
@@ -11,4 +11,4 @@ class Store {
         </div>
         `
     }
-}
+})
