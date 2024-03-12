@@ -7,12 +7,18 @@
      children: [SlideOne, SlideTwo, SlideThree],
  }, class {
 
+     globalMessage = inject('globalString')
+
+     productsService = inject('store-service')
+
      slideIndex = 0
 
      slideLength = 3
 
      onInit() {
-            console.log('store init')
+         console.log(this.productsService)
+
+         console.log('store init')
      }
 
      onDestroy() {
@@ -40,7 +46,7 @@
         return `
         <div class="store">
             <div> 
-                Store 
+                Store ${componentMap.get('store-component').instance.productsService.products.length}
                 <span> <button class="button primary" onclick="componentMap.get('store-component').instance.prevSlide()"> prev </button> </span>
                 <span> <button class="button primary" onclick="componentMap.get('store-component').instance.nextSlide()"> next </button> </span>
                 <span> ${componentMap.get('store-component').instance.slideIndex} </span>
