@@ -25,11 +25,19 @@ const render = {
         if (parentElement) {
             const component = componentMap.get(selector);
 
-            parentElement.innerHTML = component.instance.render();
+
+            if(component.meta.inputs) {
+                for(let input of component.meta.inputs) {
+                    component.instance[input] = parentElement.getAttribute('data-' + input);
+                }
+            }
 
             if (component.instance.onChange) {
                 component.instance.onChange({old: null, new: null});
             }
+
+            parentElement.innerHTML = component.instance.render();
+
 
             if (component.componentMetadata.meta.children) {
                 component.componentMetadata.meta.children.forEach(child => {
