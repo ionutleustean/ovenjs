@@ -10,6 +10,19 @@
      slideIndex = 0
 
      slideLength = 3
+
+     onInit() {
+            console.log('store init')
+     }
+
+     onDestroy() {
+            console.log('store destroy')
+     }
+
+     onChange(changes) {
+         console.log('store change', changes)
+     }
+
      nextSlide = () => {
 
          this.slideIndex = this.slideIndex === this.slideLength - 1 ? 0 : this.slideIndex + 1;
