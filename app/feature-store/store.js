@@ -27,6 +27,7 @@
 
          this.slideIndex = this.slideIndex === this.slideLength - 1 ? 0 : this.slideIndex + 1;
          console.log('next slide', this.slideIndex)
+         render.render('store-component')
      }
 
      prevSlide = () => {
