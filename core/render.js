@@ -23,6 +23,12 @@ const render =  {
     render : (selector) => {
         const parentElement = window.document.getElementById(selector);
 
+        if(!parentElement && componentMap.has(selector)){
+            render.destroy(selector);
+            return;
+        }
+
+
         if(parentElement){
             const component = componentMap.get(selector);
             parentElement.innerHTML = component.instance.render();
@@ -42,6 +48,11 @@ const render =  {
 
     init(componentMetadata) {
 
+        if(componentMap.has(componentMetadata.meta.selector)){
+            render.destroy(componentMetadata.meta.selector);
+            return;
+        }
+
         const parentElement = window.document.getElementById(componentMetadata.meta.selector);
 
         if(parentElement){
@@ -57,5 +68,15 @@ const render =  {
                 })
             }
         }
+    },
+
+    destroy(selector) {
+        const component = componentMap.get(selector);
+        if(component && component.componentMetadata.meta.children){
+            component.componentMetadata.meta.children.forEach(child =>{
+                render.destroy(child.meta.selector);
+            })
+        }
+        componentMap.delete(selector);
     }
 }
