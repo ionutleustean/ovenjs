@@ -4,6 +4,8 @@
 
  SlideOne = CreateComponent({selector: 'store-slide-one-component'}, class {
 
+
+
     productsService = inject('store-service')
      toggle(){
          if(this.productsService.products.find(p => p === 'Diavola')) {

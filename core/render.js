@@ -52,9 +52,17 @@ const render = {
 
         const parentElement = window.document.getElementById(componentMetadata.meta.selector);
 
-        if (parentElement) {
 
+
+        if (parentElement) {
             const instance = new componentMetadata.component();
+
+            if(componentMetadata.meta.inputs) {
+                for(let input of componentMetadata.meta.inputs) {
+                    instance[input] = parentElement.getAttribute('data-' + input);
+                }
+            }
+
 
             if (instance.onInit) {
                 instance.onInit();
