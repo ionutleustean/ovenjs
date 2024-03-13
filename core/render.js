@@ -26,10 +26,8 @@ const render = {
             const component = componentMap.get(selector);
 
 
-            if(component.meta.inputs) {
-                for(let input of component.meta.inputs) {
-                    component.instance[input] = parentElement.getAttribute('data-' + input);
-                }
+            if(component && component.componentMetadata.meta.inputs) {
+                render.bindInputs(component.instance,  component.componentMetadata.meta.inputs, component.componentMetadata.meta.parent, parentElement);
             }
 
             if (component.instance.onChange) {
@@ -44,14 +42,14 @@ const render = {
                     if (componentMap.has(child.meta.selector)) {
                         render.render(child.meta.selector);
                     } else {
-                        render.init(child);
+                        render.init(child, component);
                     }
                 })
             }
         }
     },
 
-    init(componentMetadata) {
+    init(componentMetadata, parent) {
 
         if (componentMap.has(componentMetadata.meta.selector)) {
             render.destroy(componentMetadata.meta.selector);
@@ -62,23 +60,25 @@ const render = {
 
 
 
+
         if (parentElement) {
             const instance = new componentMetadata.component();
 
             if(componentMetadata.meta.inputs) {
-                for(let input of componentMetadata.meta.inputs) {
-                    instance[input] = parentElement.getAttribute('data-' + input);
-                }
+                render.bindInputs(instance, componentMetadata.meta.inputs, parent, parentElement);
             }
-
 
             if (instance.onInit) {
                 instance.onInit();
             }
 
+            if(parent) {
+                componentMetadata.meta.parent = parent;
+            }
+
             componentMap.set(componentMetadata.meta.selector, {
                 instance: instance,
-                componentMetadata: componentMetadata
+                componentMetadata: {...componentMetadata}
             });
             parentElement.innerHTML = instance.render();
 
@@ -88,6 +88,13 @@ const render = {
                 })
             }
 
+        }
+    },
+
+    bindInputs(instance, inputs, parent, parentElement) {
+        for(let input of inputs) {
+            data = parentElement.getAttribute('data-' + input);
+            instance[input] = parent.instance[data] ? parent.instance[data] : data;
         }
     },
 

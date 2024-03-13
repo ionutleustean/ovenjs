@@ -1,7 +1,9 @@
 
-SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['title']}, class {
+SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['title'], outputs: ['onTitleClick']}, class {
 
     title = null;
+
+    onTitleClick = null;
 
     productsService = inject('store-service')
     toggle(){

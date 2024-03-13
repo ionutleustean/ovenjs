@@ -15,6 +15,8 @@
 
      slideLength = 4
 
+     forTitle = 'Taraneasca'
+
      onInit() {
          console.log(this.productsService)
 
@@ -56,7 +58,7 @@
             ${ componentMap.get('store-component').instance.slideIndex === 0 ?  '<div id="store-slide-one-component"> </div>' : ''}
             ${ componentMap.get('store-component').instance.slideIndex === 1 ?  '<div id="store-slide-two-component"> </div>' : ''}
             ${ componentMap.get('store-component').instance.slideIndex === 2 ?  '<div id="store-slide-three-component"> </div>' : ''}
-            ${ componentMap.get('store-component').instance.slideIndex === 3 ?  '<div id="store-slide-four-component" data-title="Taraneasca"> </div>' : ''}
+            ${ componentMap.get('store-component').instance.slideIndex === 3 ?  '<div id="store-slide-four-component" data-title="forTitle"> </div>' : ''}
      
         </div>
         `
