@@ -31,6 +31,10 @@
          console.log('store change', changes)
      }
 
+     alertClickOnLastSlide = () => {
+         alert('click on last slide')
+     }
+
      nextSlide = () => {
 
          this.slideIndex = this.slideIndex === this.slideLength - 1 ? 0 : this.slideIndex + 1;
@@ -58,7 +62,9 @@
             ${ componentMap.get('store-component').instance.slideIndex === 0 ?  '<div id="store-slide-one-component"> </div>' : ''}
             ${ componentMap.get('store-component').instance.slideIndex === 1 ?  '<div id="store-slide-two-component"> </div>' : ''}
             ${ componentMap.get('store-component').instance.slideIndex === 2 ?  '<div id="store-slide-three-component"> </div>' : ''}
-            ${ componentMap.get('store-component').instance.slideIndex === 3 ?  '<div id="store-slide-four-component" data-title="forTitle"> </div>' : ''}
+            ${ componentMap.get('store-component').instance.slideIndex === 3 ?  
+                '<div id="store-slide-four-component" data-title="forTitle" data-onTitleClick="alertClickOnLastSlide"> </div>' 
+            : ''}
      
         </div>
         `

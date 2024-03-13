@@ -30,6 +30,10 @@ const render = {
                 render.bindInputs(component.instance,  component.componentMetadata.meta.inputs, component.componentMetadata.meta.parent, parentElement);
             }
 
+            if(component && component.componentMetadata.meta.outputs) {
+                render.bindOutputs(component.instance,  component.componentMetadata.meta.outputs, component.componentMetadata.meta.parent, parentElement);
+            }
+
             if (component.instance.onChange) {
                 component.instance.onChange({old: null, new: null});
             }
@@ -68,6 +72,10 @@ const render = {
                 render.bindInputs(instance, componentMetadata.meta.inputs, parent, parentElement);
             }
 
+            if(componentMetadata.meta.outputs) {
+                render.bindOutputs(instance, componentMetadata.meta.outputs, parent, parentElement);
+            }
+
             if (instance.onInit) {
                 instance.onInit();
             }
@@ -95,6 +103,13 @@ const render = {
         for(let input of inputs) {
             data = parentElement.getAttribute('data-' + input);
             instance[input] = parent.instance[data] ? parent.instance[data] : data;
+        }
+    },
+
+    bindOutputs(instance, inputs, parent, parentElement) {
+        for(let input of inputs) {
+            data = parentElement.getAttribute('data-' + input);
+            instance[input] = parent.instance[data] ? parent.instance[data] : () => {console.error('no function')};
         }
     },
 

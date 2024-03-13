@@ -1,5 +1,5 @@
 
-SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['title']}, class {
+SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['title'], outputs: ['onTitleClick']}, class {
 
     title = null;
 
@@ -17,7 +17,7 @@ SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['t
 
     render() {
         return `
-        <div class="slide slide-one">
+        <div class="slide slide-one"  onclick="componentMap.get('store-slide-four-component').instance.onTitleClick()">
             <div class="slide-content" onclick="componentMap.get('store-slide-four-component').instance.toggle()"> 
                 <h1> ${componentMap.get('store-slide-four-component').instance.title} </h1>
                 <p> Sos de rosii, mozzarella, salam spianata calabra, ‘Nduja calabra (si mai picanta) </p>
