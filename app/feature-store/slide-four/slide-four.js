@@ -1,5 +1,5 @@
 
-SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['title'], outputs: ['onTitleClick']}, class {
+SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['title']}, class {
 
     title = null;
 
