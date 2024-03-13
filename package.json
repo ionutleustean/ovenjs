@@ -1,0 +1,16 @@
+{
+  "name": "ovenjs",
+  "version": "1.0.0",
+  "description": "1. Create a slider for store     2. Create a chage detection mechanism for rereading the data",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && node scripts/oven-compiler.cjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.4.2"
+  },
+  "type": "module"
+}

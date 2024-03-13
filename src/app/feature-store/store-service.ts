@@ -1,7 +1,7 @@
+import {CreateService} from "../../core/service";
 
 
-
- CreateService('store-service', class StoreService {
+CreateService('store-service', class StoreService {
     products = [];
 
     add(product) {

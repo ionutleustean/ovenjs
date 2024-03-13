@@ -1,7 +1,7 @@
 
 
 .home {
-    background: url("../../public/home-bg.jpg") no-repeat bottom;
+    background: url("../../../public/home-bg.jpg") no-repeat bottom;
     background-size: cover;
     height: calc(100vh - 5rem) ;
     position: relative;

@@ -2,8 +2,12 @@
 
 
 
+export function a<T>(a: T){return <T>a};
 
-function CreateComponent(meta, componetClass) {
+
+export function CreateComponent(meta, componetClass) {
+
+
     return {
         meta: {
             ...meta

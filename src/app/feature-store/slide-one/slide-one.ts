@@ -1,9 +1,8 @@
+import {CreateComponent} from "../../../core/component";
+import {inject} from "../../../core/dependency-injection";
 
 
-
-
- SlideOne = CreateComponent({selector: 'store-slide-one-component'}, class {
-
+export const SlideOne = CreateComponent({selector: 'store-slide-one-component'}, class {
 
 
     productsService = inject('store-service')
@@ -19,7 +18,7 @@
     render() {
         return `
         <div class="slide slide-one">
-            <div class="slide-content" onclick="((toggle()))"> 
+            <div class="slide-content" onclick="((this.toggle()))"> 
                 <h1> Diavola </h1>
                 <p> Sos de rosii, mozzarella, salam spianata calabra, ‘Nduja calabra (si mai picanta) </p>
             </div>

@@ -1,5 +1,7 @@
+import {CreateComponent} from "../../../core/component";
+import {inject} from "../../../core/dependency-injection";
 
-SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['title'], outputs: ['onTitleClick']}, class {
+export const SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['title'], outputs: ['onTitleClick']}, class {
 
     title = null;
 
@@ -16,10 +18,11 @@ SlideFour = CreateComponent({selector: 'store-slide-four-component', inputs: ['t
     }
 
     render() {
+        // @ts-ignore
         return `
-        <div class="slide slide-one"  onclick="((onTitleClick()))">
-            <div class="slide-content" onclick="((toggle()))"> 
-                <h1> ${((title))} </h1>
+        <div class="slide slide-one"  onclick="((this.onTitleClick()))">
+            <div class="slide-content" onclick="((this.toggle()))"> 
+                <h1> ${((this.title))} </h1>
                 <p> Sos de rosii, mozzarella, salam spianata calabra, ‘Nduja calabra (si mai picanta) </p>
             </div>
         </div>

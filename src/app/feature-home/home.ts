@@ -1,4 +1,8 @@
-const Home = CreateComponent({selector: 'home-component'} , class {
+import {CreateComponent} from "../../core/component";
+
+export const Home = CreateComponent({selector: 'home-component'} , class {
+
+
     render() {
         return `
       <div class="home">

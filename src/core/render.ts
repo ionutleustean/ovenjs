@@ -1,14 +1,22 @@
-const componentMap = new Map();
 
-logComponentMap = () => {
-    console.log(componentMap);
+
+
+
+declare global {
+    interface Window { componentMap: any; }
+}
+
+window.componentMap = new Map<string, any>();
+
+export const logComponentMap = () => {
+    console.log(window.componentMap);
 }
 
 
-const render = {
+export const render = {
 
     rerenderAll: () => {
-        componentMap.forEach((value, key) => {
+        window.componentMap.forEach((value, key) => {
             render.render(value.componentMetadata.meta.selector);
         });
     },
@@ -16,14 +24,14 @@ const render = {
     render: (selector) => {
         const parentElement = window.document.getElementById(selector);
 
-        if (!parentElement && componentMap.has(selector)) {
+        if (!parentElement && window.componentMap.has(selector)) {
             render.destroy(selector);
             return;
         }
 
 
         if (parentElement) {
-            const component = componentMap.get(selector);
+            const component = window.componentMap.get(selector);
 
 
             if(component && component.componentMetadata.meta.inputs) {
@@ -43,7 +51,7 @@ const render = {
 
             if (component.componentMetadata.meta.children) {
                 component.componentMetadata.meta.children.forEach(child => {
-                    if (componentMap.has(child.meta.selector)) {
+                    if (window.componentMap.has(child.meta.selector)) {
                         render.render(child.meta.selector);
                     } else {
                         render.init(child, component);
@@ -53,9 +61,9 @@ const render = {
         }
     },
 
-    init(componentMetadata, parent) {
+    init(componentMetadata, parent?) {
 
-        if (componentMap.has(componentMetadata.meta.selector)) {
+        if (window.componentMap.has(componentMetadata.meta.selector)) {
             render.destroy(componentMetadata.meta.selector);
             return;
         }
@@ -84,7 +92,7 @@ const render = {
                 componentMetadata.meta.parent = parent;
             }
 
-            componentMap.set(componentMetadata.meta.selector, {
+            window.componentMap.set(componentMetadata.meta.selector, {
                 instance: instance,
                 componentMetadata: {...componentMetadata}
             });
@@ -101,20 +109,20 @@ const render = {
 
     bindInputs(instance, inputs, parent, parentElement) {
         for(let input of inputs) {
-            data = parentElement.getAttribute('data-' + input);
+            const data = parentElement.getAttribute('data-' + input);
             instance[input] = parent.instance[data] ? parent.instance[data] : data;
         }
     },
 
     bindOutputs(instance, inputs, parent, parentElement) {
         for(let input of inputs) {
-            data = parentElement.getAttribute('data-' + input);
+            const data = parentElement.getAttribute('data-' + input);
             instance[input] = parent.instance[data] ? parent.instance[data] : () => {console.error('no function')};
         }
     },
 
     destroy(selector) {
-        const component = componentMap.get(selector);
+        const component = window.componentMap.get(selector);
         if (component && component.componentMetadata.meta.children) {
             component.componentMetadata.meta.children.forEach(child => {
                 render.destroy(child.meta.selector);
@@ -123,6 +131,6 @@ const render = {
         if (component && component.instance.onDestroy) {
             component.instance.onDestroy();
         }
-        componentMap.delete(selector);
+        window.componentMap.delete(selector);
     }
 }

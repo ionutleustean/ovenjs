@@ -1,14 +1,14 @@
 
 
 
-const  di = function() {
+export const  di = function() {
     let di = new Map();
 
-    registerDiInside = (token, instance) => {
+    const registerDiInside = (token, instance) => {
         di.set(token, instance);
     }
 
-    injectInside = (token) => {
+    const injectInside = (token) => {
         return di.get(token);
     }
 
@@ -22,4 +22,4 @@ const  di = function() {
 di.registerDi('globalString', 'Hello World!');
 
 
-inject = di.inject;
+export const inject = di.inject;

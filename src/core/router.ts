@@ -1,4 +1,6 @@
-router = (routerConfig) => {
+import {render} from "./render";
+
+export const router = (routerConfig) => {
 
     const config = [...routerConfig];
 
