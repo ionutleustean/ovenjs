@@ -16,7 +16,7 @@
     render() {
         return `
         <div class="slide slide-three">
-            <div class="slide-content"  onclick="componentMap.get('store-slide-three-component').instance.toggle()"> 
+            <div class="slide-content"  onclick="((toggle()))"> 
                 <h1> Margherita </h1>
                 <p> Sos de rosii, mozzarella, busuioc proaspat, ulei de masline extravirgin </p>
             </div>

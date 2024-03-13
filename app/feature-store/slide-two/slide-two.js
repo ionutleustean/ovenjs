@@ -16,7 +16,7 @@
     render() {
         return `
         <div class="slide slide-two">
-            <div class="slide-content"  onclick="componentMap.get('store-slide-two-component').instance.toggle()">
+            <div class="slide-content"  onclick="((toggle()))">
                 <h1> Mexicana </h1>
                 <p> Sos de rosii, mozzarella, salam picant spianata calabra, fasole rosie boabe, pepperoncino, oregano </p>
             </div>

@@ -48,21 +48,22 @@
 
      }
 
+
     render() {
         return `
         <div class="store">
             <div> 
-                Store ${componentMap.get('store-component').instance.productsService.products.length}
-                <span> <button class="button primary" onclick="componentMap.get('store-component').instance.prevSlide()"> prev </button> </span>
-                <span> <button class="button primary" onclick="componentMap.get('store-component').instance.nextSlide()"> next </button> </span>
-                <span> ${componentMap.get('store-component').instance.slideIndex} </span>
+                Store ${ ((productsService.products.length)) }
+                <span> <button class="button primary" onclick="((prevSlide()))"> prev </button> </span>
+                <span> <button class="button primary" onclick="((nextSlide()))"> next </button> </span>
+                <span> ${((slideIndex))} </span>
              </div>
             
-            
-            ${ componentMap.get('store-component').instance.slideIndex === 0 ?  '<div id="store-slide-one-component"> </div>' : ''}
-            ${ componentMap.get('store-component').instance.slideIndex === 1 ?  '<div id="store-slide-two-component"> </div>' : ''}
-            ${ componentMap.get('store-component').instance.slideIndex === 2 ?  '<div id="store-slide-three-component"> </div>' : ''}
-            ${ componentMap.get('store-component').instance.slideIndex === 3 ?  
+           
+            ${ ((slideIndex)) === 0 ?  '<div id="store-slide-one-component"> </div>' : ''}
+            ${ ((slideIndex)) === 1 ?  '<div id="store-slide-two-component"> </div>' : ''}
+            ${ ((slideIndex)) === 2 ?  '<div id="store-slide-three-component"> </div>' : ''}
+            ${ ((slideIndex)) === 3 ?  
                 '<div id="store-slide-four-component" data-title="forTitle" data-onTitleClick="alertClickOnLastSlide"> </div>' 
             : ''}
      
