@@ -1,3 +1,4 @@
 # TODO:
-    1. Create a slider for store
-    2. Create a chage detection mechanism for rereading the data
+    1. Create a Service core file for the application
+    2. Create a Service for store
+    3. Inject the service in different components
