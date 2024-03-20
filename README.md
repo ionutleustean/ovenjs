@@ -1,3 +1,3 @@
 # TODO:
-    1. Create a slider for store
-    2. Create a chage detection mechanism for rereading the data
+    1. Update child component metadata with the output fields
+    2. Append the parent callbacks to the child component
